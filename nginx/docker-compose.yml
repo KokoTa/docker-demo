@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: knginx
+    image: kokota/nginx
+    ports:
+      - '80:80'
+    volumes:
+      - ./website:/var/www/html/website
