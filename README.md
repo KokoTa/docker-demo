@@ -1,7 +1,7 @@
 <!--
  * @Author: KokoTa
  * @Date: 2020-06-09 19:45:56
- * @LastEditTime: 2020-06-09 19:59:55
+ * @LastEditTime: 2020-06-09 20:05:13
  * @Description: Docker 学习示例
 -->
 
@@ -39,7 +39,9 @@ docker-compose 启动会生成独立网桥，对于多个互联的容器来说�
 
 通过 [Webhook 示例](https://embeddednature.com/2019/01/jenkins-installation-guide-with-blue-ocean-setup-and-github-integration/) 可以学习到如何使用 webhook 来完成项目提交后自动执行构建
 
-启动步骤:
+PS：如果出现 `ERROR: Error fetching remote repo 'origin'` 错误，删除 jenkins_home/workspace 后重新构建一般都能成功
+
+启动 jenkins 步骤:
 
 1. cd 到相关目录
 2. `docker-compose up -d`
