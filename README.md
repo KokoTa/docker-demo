@@ -1,7 +1,7 @@
 <!--
  * @Author: KokoTa
  * @Date: 2020-06-09 19:45:56
- * @LastEditTime: 2020-06-10 10:28:47
+ * @LastEditTime: 2020-06-11 13:58:08
  * @Description: Docker 学习示例
 -->
 
@@ -39,9 +39,15 @@ docker-compose 启动会生成独立网桥，对于多个互联的容器来说�
 
 通过 [Webhook 示例](https://embeddednature.com/2019/01/jenkins-installation-guide-with-blue-ocean-setup-and-github-integration/) 可以学习到如何使用 webhook 来完成项目提交后自动执行构建
 
-如果出现 `ERROR: Error fetching remote repo 'origin'` 错误，删除 jenkins_home/workspace 后重新构建可以解决。[具体解决方案](https://stackoverflow.com/questions/31129417/jenkins-not-able-to-fetch-code-from-remote-git)
+如果出现 `ERROR: Error fetching remote repo 'origin'` 错误，这里有 [一些解决方案](https://stackoverflow.com/questions/31129417/jenkins-not-able-to-fetch-code-from-remote-git)，建议直接配置 `Wipe out repository & force clone`，每次都删掉库重新拉代码
+
+如果出现 `... docker: not found`，可能是因为你 agent 的是某个容器，容器里没有 docker，所以肯定会报错啊。此时把 agent 设置为 any 可以解决问题，具体的见 `./jenkins/web` 里的 Jenkinsfile
 
 启动 jenkins 步骤:
 
 1. cd 到相关目录
 2. `docker-compose up -d`
+
+测试库在 [这里](https://github.com/KokoTa/jenkins-test)，项目里有已经写好的 Dockerfile，用来构建前端项目的镜像
+
+打包后发到远程服务器直接启动就可以了
